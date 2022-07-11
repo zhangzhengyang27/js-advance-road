@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+<script type="text/javascript">
+
+    function Person(myName) {
+        this.name = myName;
+    }
+
+    function Student(myName, myScore) {
+        //第一步通过call把person类改成student。
+        Person.call(this, myName);
+        this.score = myScore;
+    }
+
+    //第二步再修改student的原型对象为new Person();
+    Student.prototype = new Person();
+    //并把Student.prototype.constructor指向了student的构造函数。
+    Student.prototype.constructor = Student;
+    let stu = new Student();
+    console.log(Person.prototype.isPrototypeOf(stu)); // true
+</script>
+</body>
+</html>
