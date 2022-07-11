@@ -9,5 +9,5 @@ const user = {
     }
 };
 
-console.log("user:",  + user);
-console.log("user:",  `${user}`);
+console.log("user:",  + user);  // 10
+console.log("user:",  `${user}`);  // user: John

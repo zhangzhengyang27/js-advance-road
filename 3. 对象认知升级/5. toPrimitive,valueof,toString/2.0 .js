@@ -1,9 +1,12 @@
+// 如果未定义[Symbol.toPrimitive](hint)，期望的是'string'，toString、valueOf都没有返回期望值
+
+
 const obj = {
     value: 10,
-    valueOf(){
+    valueOf() {
         return this;
     },
-    toString(){
+    toString() {
         return this;
     }
 };
