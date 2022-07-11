@@ -1,3 +1,4 @@
+// instanceOf 检测构造功函数prototype 属性是否出现在某个实例对象的原型链上
 function instanceOf(instance, cclass) {
     let proto = instance.__proto__
     let prototype = cclass.prototype
@@ -9,15 +10,23 @@ function instanceOf(instance, cclass) {
     return false;
 }
 
-class Parent{}
-class Child extends Parent{}
-class CChild extends Child{}
-class Luren{}
+class Parent {
+}
+
+class Child extends Parent {
+}
+
+class CChild extends Child {
+}
+
+class Luren {
+}
+
 var cchild = new CChild();
 
-console.log(instanceOf(cchild, Parent));
-console.log(instanceOf(cchild, Child));
-console.log(instanceOf(cchild, CChild));
-console.log(instanceOf(cchild, Object));
-console.log(instanceOf(cchild, Date));
-console.log(instanceOf(cchild, Luren));
+console.log(instanceOf(cchild, Parent));  // true
+console.log(instanceOf(cchild, Child));   // true
+console.log(instanceOf(cchild, CChild)); // true
+console.log(instanceOf(cchild, Object)); // true
+console.log(instanceOf(cchild, Date));  // false
+console.log(instanceOf(cchild, Luren)); // false
