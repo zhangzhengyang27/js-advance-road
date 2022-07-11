@@ -42,6 +42,7 @@ for (let i = 0; i < arr.length; i++) {
     delete arr[i][`p${rd}`]
 
 }
+// del: 246.154ms
 console.timeEnd("del");
 
 console.time("set");
@@ -50,4 +51,5 @@ for (let i = 0; i < arr2.length; i++) {
     arr2[i][`p${rd}`] = undefined;
 
 }
+// set: 14.211ms
 console.timeEnd("set");

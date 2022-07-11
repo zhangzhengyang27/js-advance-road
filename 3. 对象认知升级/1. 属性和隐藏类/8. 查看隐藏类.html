@@ -9,24 +9,28 @@
 <body>
 
 
-    <button id="btnAdd">添加属性</button>
+<button id="btnAdd">添加属性</button>
 
 
-    <script>
+<script>
 
-        function MyObject(){
-            this.name = "name";
-            this.age =  18;
-        }
+    function MyObject() {
+        this.name = "name";
+        this.age = 18;
+    }
 
-        var obj = new MyObject();
+    var obj = new MyObject();
+    // 在内存里面查看隐藏类
+    // 守护隐藏类：
+    // 初始化时保持属性顺序一致
+    // 一次性初始化完毕
+    // 谨慎使用delete
+    document.getElementById("btnAdd").addEventListener("click", () => {
+        obj.sex = "不男不女"
+    });
 
-        document.getElementById("btnAdd").addEventListener("click",()=>{
-            obj.sex =  "不男不女"
-        });
 
-
-    </script>
+</script>
 
 </body>
 </html>

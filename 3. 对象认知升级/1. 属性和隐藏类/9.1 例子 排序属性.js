@@ -41,6 +41,7 @@ for (let i = 0; i < arr2.length; i++) {
     arr2[i][rd] = undefined;
 
 }
+//  9.223ms
 console.timeEnd("set");
 
 console.time("del");
@@ -48,5 +49,6 @@ for (let i = 0; i < arr.length; i++) {
     const rd = i % 25;
     delete arr[i][rd]
 }
+//  14.111ms
 console.timeEnd("del");
 

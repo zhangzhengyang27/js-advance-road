@@ -7,38 +7,38 @@
     <title>Document</title>
 </head>
 <body>
-    
 
-    <div>
 
-        <button id="btnDelete">猛如虎的操作</button>
+<div>
 
-    </div>
+    <button id="btnDelete">猛如虎的操作</button>
 
-    <script>
+</div>
 
-        function MyObject(counts = 10) {
-            for (let i = 0; i < counts; i++) {
-                this[i] = `${i}-${Math.random()}`;
-            }
+<script>
+
+    function MyObject(counts = 10) {
+        for (let i = 0; i < counts; i++) {
+            this[i] = `${i}-${Math.random()}`;
         }
+    }
 
-        var foo = new MyObject();
+    var foo = new MyObject();
+    <!-- 破坏内属性-->
+    document.getElementById("btnDelete").addEventListener("click", () => {
+        actions();
+        console.log("actions", " done");
+    })
 
-        document.getElementById("btnDelete").addEventListener("click", () => {
-            actions();
-            console.log("actions", " done");
-        })
-
-        function actions() {
-            foo[100000] = `${100000}-${Math.random()}`;
-            foo[100] = `${100}-${Math.random()}`;
-            delete foo[9];
-            foo[2] = `2-${Math.random()}`;
-        }
+    function actions() {
+        foo[100000] = `${100000}-${Math.random()}`;
+        foo[100] = `${100}-${Math.random()}`;
+        delete foo[9];
+        foo[2] = `2-${Math.random()}`;
+    }
 
 
-    </script>
+</script>
 </body>
 </html>
 

@@ -7,6 +7,10 @@ obj["2"] = 'p2';
 for (var p in obj) {
     console.log("property:", p)
 }
+// property: 1
+// property: 2
+// property: 6
+
 
 // 0+数字
 var obj2 = {};
@@ -18,3 +22,7 @@ obj2["02"] = 'p2';
 for (var p in obj2) {
     console.log("property:", p)
 }
+
+// property: 01
+// property: 06
+// property: 02

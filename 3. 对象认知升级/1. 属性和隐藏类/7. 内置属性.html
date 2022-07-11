@@ -11,70 +11,51 @@
 <body>
 
 
-    <script>
-        function CustomObject(eCount, pCount) {
-            for (let i = 0; i < eCount; i++) {
-                this[i] = `e-${i}`
-            }
-            //添加常规属性 
-            for (let i = 0; i < pCount; i++) {
-                this[`p-${i}`] = `p-${i}`
-            }
+<script>
+
+    /*
+    * 对象内属性：被保存到对象自身的常规属性
+    * 内属性的属性：10个
+    * 如果是10个以内的属性，保存到内属性里面
+    */
+    function CustomObject(eCount, pCount) {
+        for (let i = 0; i < eCount; i++) {
+            this[i] = `e-${i}`
         }
+        //添加常规属性
+        for (let i = 0; i < pCount; i++) {
+            this[`p-${i}`] = `p-${i}`
+        }
+    }
 
-        // 排序属性6， 普通属性6个
-        // var obj = new CustomObject(6, 6);
+    // 排序属性6， 普通属性6个
+    // var obj = new CustomObject(6, 6);
 
-        // 排序属性6， 普通16个
-        // var obj = new CustomObject(6, 16);
+    // 排序属性6， 普通16个
+    // var obj = new CustomObject(6, 16);
 
-        // 排序属性6， 普通50个, 普通属性非线性存储
-        var obj = new CustomObject(6, 50);
+    // 排序属性6， 普通50个, 普通属性非线性存储
+    var obj = new CustomObject(6, 50);
 
-        console.log(obj)
-
-
-
-
-
-
-
+    console.log(obj)
 
 
+    // function CustomObject(eCount, pCount) {
+    //     this[0] = "v-1";
+    //     this[9999999] = "v-9999999";
+    //     this['str1'] = 'v-str1';
+    //     // this["pp"] = "p"
+
+    //     // return this;
+    // }
 
 
+    // var obj = new CustomObject(10, 10);
+
+    // console.log(obj[100])
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        // function CustomObject(eCount, pCount) {
-        //     this[0] = "v-1";
-        //     this[9999999] = "v-9999999";
-        //     this['str1'] = 'v-str1';
-        //     // this["pp"] = "p"
-
-        //     // return this;
-        // }
-
-
-        // var obj = new CustomObject(10, 10);
-
-        // console.log(obj[100])
-        
-
-    </script>
+</script>
 
 
 </body>
