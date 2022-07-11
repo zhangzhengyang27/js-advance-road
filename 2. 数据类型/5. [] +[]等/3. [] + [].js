@@ -3,6 +3,6 @@
 
 
 // [] +  []
-// [].toString() + [].toString()
+// 底层是 [].toString() + [].toString()
 // '' + ''
 // ''

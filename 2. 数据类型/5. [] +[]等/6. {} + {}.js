@@ -4,3 +4,5 @@
 // {} + {};
 // + '[object Object]'
 // NaN
+
+{} + {};  // NAN
