@@ -37,7 +37,7 @@ Object.defineProperty(person, "ins_no_enumerable_attr_sex", {
 });
 
 Object.defineProperty(person, symbolSalary, {
-    enumerable: false, 
+    enumerable: false,
     value: 999
 });
 
@@ -47,15 +47,16 @@ function getNoEnumerable(_obj) {
     const keys = Reflect.ownKeys(_obj);
     // const result = keys.filter(key=> {
     //     return !Object.getOwnPropertyDescriptor(_obj, key).enumerable
-    // }) 
+    // })
     // return result;
 
-    const result = keys.filter(key=> {
+    // propertyIsEnumerable es6的方法
+    const result = keys.filter(key => {
         return !Object.prototype.propertyIsEnumerable.call(_obj, key)
-    }) 
+    })
     return result;
 }
 
 
-
 console.log(getNoEnumerable(person));
+// [ 'ins_no_enumerable_attr_sex', Symbol(ins_symbol_attr_salary) ]

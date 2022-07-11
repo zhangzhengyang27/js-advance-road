@@ -1,4 +1,4 @@
-// 使用现有的对象来提供新创建对象的_proto_
+// 使用现有的对象来提供新创建对象的_proto_，创建纯净对象
 if (typeof Object.create !== "function") {
     Object.create = function (proto, propertiesObject) {
         if (typeof proto !== 'object' && typeof proto !== 'function') {

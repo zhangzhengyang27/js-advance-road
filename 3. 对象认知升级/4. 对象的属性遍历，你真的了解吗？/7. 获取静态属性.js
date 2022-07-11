@@ -1,12 +1,13 @@
 const symbolSay = Symbol.for("say1");
 
-class Person { 
+class Person {
     static flag = "人";
+
     static getFlag() {
         return Person.flag;
     }
 
-    static [Symbol.for("symbolPro")](){
+    static [Symbol.for("symbolPro")]() {
         return "symbolPro"
     }
 
@@ -14,16 +15,19 @@ class Person {
         this.name = name;
         this[symbolSay] = "haha";
     }
+
     getName() {
         return this.name;
     }
+
     getAge = () => {
         return 15;
     }
 }
 
-
+// Reflect.ownKeys(_obj)=Object.getOwnPropertyNames(_obj)+Object.getOwnPropertySymbols(_obj)
 function getOwnPropertyStatics(_obj) {
+    // 需要排除的静态属性
     const KNOWN_STATICS = {
         name: true,
         length: true,
@@ -50,4 +54,5 @@ function getOwnPropertyStatics(_obj) {
 
 
 const staticProps = getOwnPropertyStatics(Person);
+// 静态属性: [ 'getFlag', 'flag', Symbol(symbolPro) ]
 console.log("静态属性:", staticProps);
