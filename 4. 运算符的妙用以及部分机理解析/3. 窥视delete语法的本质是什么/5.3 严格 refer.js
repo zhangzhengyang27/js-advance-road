@@ -1,22 +1,24 @@
 "use strict"
 
-class Parent {    
-    constructor(name){
+class Parent {
+    constructor(name) {
         this.name = name;
     }
-    getName(){
+
+    getName() {
 
     }
 }
 
-class Child extends Parent {    
-    constructor(name, age){
+class Child extends Parent {
+    constructor(name, age) {
         super(name);
-        this.age =  age
+        this.age = age
     }
 
-    deleteAny(){
+    deleteAny() {
         console.log("super", super.getName);
+        // ReferenceError: Unsupported reference to 'super'
         delete super.getName
     }
 }

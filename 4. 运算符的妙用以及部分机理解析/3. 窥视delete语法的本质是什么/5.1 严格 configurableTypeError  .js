@@ -8,4 +8,5 @@ Object.defineProperty(person, "name", {
     configurable: false
 });
 
+// TypeError: Cannot delete property 'name' of #<Object>
 delete person.name;
