@@ -9,8 +9,20 @@ var jsonStr = `{
         }
     }
 }`
-
-JSON.parse(jsonStr, function(k, v){
+// 深度优先遍历
+JSON.parse(jsonStr, function (k, v) {
     console.log("key:", k);
     return v;
 })
+
+// 最后返回一个空键
+/*
+key: name
+key: count
+key: createTime
+key: orderId
+key: desc
+key: more
+key: orderDetail
+key:
+*/
