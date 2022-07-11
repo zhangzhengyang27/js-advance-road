@@ -1,27 +1,31 @@
-
 //1 问题
 const obj = {};
 
 Object.defineProperty(obj, "name", {});
 
+obj.name = 1;
 
-obj.name=1;
+console.log(obj.name);  // undefined
 
-console.log(obj.name);
-
-console.log(Object.getOwnPropertyDescriptor(obj,"name"))
-
+console.log(Object.getOwnPropertyDescriptor(obj, "name"))
+/*
+{
+  value: undefined,
+  writable: false,
+  enumerable: false,
+  configurable: false
+}
+*/
 
 // 尝试修改 writeable
-// obj.name = 10;
-// console.log("name", obj.name);
+obj.name = 10;
+console.log("name", obj.name);  // undefined
 
-// // 尝试删除 configurable
-// console.log(delete obj.name);
+// 尝试删除 configurable
+console.log(delete obj.name);  // false
 
-// // 尝试遍历
-// console.log(Object.keys(obj))
-
+// 尝试遍历
+console.log(Object.keys(obj))  // []
 
 
 //2. 获取属性描述符

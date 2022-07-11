@@ -1,5 +1,4 @@
-
-//2. Object.seal
+//2. Object.seal 阻止添加新属性+属性标记为不可配置(不可以删除)
 const object1 = {
     property1: 42
 };
