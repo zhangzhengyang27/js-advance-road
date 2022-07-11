@@ -10,4 +10,4 @@ pf(Object.prototype.toString.call(a))
 
 
 // Object.prototype.toString会读取该值
-// 需要自定义类型
+// 识别自定义对象
