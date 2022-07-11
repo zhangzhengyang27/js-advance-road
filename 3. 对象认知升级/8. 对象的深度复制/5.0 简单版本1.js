@@ -1,4 +1,4 @@
-const { hasOwnProperty } = Object.prototype;
+const {hasOwnProperty} = Object.prototype;
 
 function isObject(obj) {
     return obj !== null && typeof obj == "object";
@@ -18,6 +18,7 @@ function deepClone(obj) {
 
     if (isArray(obj)) {
         data = [];
+        // 非数字属性，不能被length识别 需要for in
         for (let i = 0; i < obj.length; i++) {
             data[i] = deepClone(obj[i]);
         }
@@ -33,6 +34,7 @@ function deepClone(obj) {
 }
 
 const arr = [1, 2];
+// 添加非数字属性，但是不能被拷贝
 arr.ccc = "ccc"
 
 var obj1 = {
@@ -42,6 +44,7 @@ var obj1 = {
     arr
 };
 const a = deepClone(obj1)
+// { name: 'obj1', age: 18, date: {}, arr: [ 1, 2 ] }
 console.log(a);
 
 

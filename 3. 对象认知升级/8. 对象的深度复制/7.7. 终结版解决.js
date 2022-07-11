@@ -1,4 +1,5 @@
-const { toString, hasOwnProperty } = Object.prototype;
+// 处理特殊类型
+const {toString, hasOwnProperty} = Object.prototype;
 
 function hasOwnProp(obj, property) {
     return hasOwnProperty.call(obj, property)
@@ -107,15 +108,31 @@ var obj = {
         p23: undefined,
         p24: 666
     }],
-    null:null,
-    p4:new RegExp(),
-    p3:undefined,
-    func: function () { console.log("func");return 1},
+    null: null,
+    p4: new RegExp(),
+    p3: undefined,
+    func: function () {
+        console.log("func");
+        return 1
+    },
     Symbol: Symbol(2),
     bigint: BigInt(100),
 };
-obj.loop=obj;
+obj.loop = obj;
 
 
-const f=cloneDeep(obj);
-console.log("f==",f);
+const f = cloneDeep(obj);
+console.log("f==", f);
+/*
+f== <ref *1> {
+  p1: 'p1',
+  null: null,
+  p4: /(?:)/,
+  p3: undefined,
+  func: [Function: func],
+  Symbol: Symbol(2),
+  bigint: 100n,
+  loop: [Circular *1],
+  p2: [ 'p22', { p23: undefined, p24: 666 } ]
+}
+*/

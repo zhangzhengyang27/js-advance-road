@@ -1,4 +1,4 @@
-const { hasOwnProperty } = Object.prototype;
+const {hasOwnProperty} = Object.prototype;
 
 function isObject(obj) {
     return obj !== null && typeof obj == "object";
@@ -34,6 +34,7 @@ var obj1 = {
     arr
 };
 const a = deepClone(obj1)
+// { name: 'obj1', age: 18, date: {}, arr: [ 1, 2, ccc: 'ccc' ] }
 console.log(a);
 
 

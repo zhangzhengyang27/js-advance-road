@@ -1,11 +1,13 @@
+const {hasOwnProperty} = Object.prototype;
 
-const { hasOwnProperty } = Object.prototype;
 function isObject(obj) {
     return obj !== null && typeof obj == "object";
 }
+
 function isArray(obj) {
     return Array.isArray(obj)
 }
+
 function hasOwn(obj, key) {
     return hasOwnProperty.call(obj, key)
 }
@@ -26,6 +28,7 @@ function deepClone(obj) {
                     continue;
                 }
                 if (wmap.has(val)) {
+                    // 跳出循环
                     continue;
                 }
                 wmap.set(val, 1);
@@ -43,4 +46,5 @@ var obj2 = {
     name: "obj2"
 };
 obj2['obj2'] = obj2;
+// { name: 'obj2' }
 console.log(deepClone(obj2));

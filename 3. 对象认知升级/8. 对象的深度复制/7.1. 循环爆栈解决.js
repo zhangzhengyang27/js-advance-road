@@ -1,19 +1,27 @@
-const { toString, hasOwnProperty } = Object.prototype;
+// 循环代替递归
+
+const {toString, hasOwnProperty} = Object.prototype;
+
 function hasOwnProp(obj, property) {
     return hasOwnProperty.call(obj, property)
 }
+
 function getType(obj) {
     return toString.call(obj).slice(8, -1).toLowerCase();
 }
+
 function isObject(obj) {
     return getType(obj) === "object";
 }
+
 function isArray(arr) {
     return getType(arr) === "array";
 }
+
 function isCloneObject(obj) {
     return isObject(obj) || isArray(obj)
 }
+
 // 循环
 function cloneDeep(x) {
     // 先设置默认值
@@ -104,11 +112,12 @@ function createData(deep) {
 
 
 const data = createData(10000);
-// const f=JSON.parse(JSON.stringify(data));
+// console.log(JSON.stringify(data));
 // console.log(JSON.parse(JSON.stringify(data)));
 
 // clone deep
 const f = cloneDeep(data);
+// f== { data: { '1': 1, data: { '2': 2, data: [Object] } } }
 console.log("f==", f);
 
 
