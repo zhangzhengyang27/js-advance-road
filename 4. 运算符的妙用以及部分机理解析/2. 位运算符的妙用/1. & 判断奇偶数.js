@@ -1,3 +1,4 @@
+// 判断奇偶数，其实就是比较二进制最后一位数
 function checkNum(num) {
     const result = num & 1;
     if (result == 1) {
