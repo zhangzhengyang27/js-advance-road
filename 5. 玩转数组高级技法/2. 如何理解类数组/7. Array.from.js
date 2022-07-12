@@ -1,4 +1,4 @@
-// 类数组
+// 类数组转换为数组
 const arrayLikeObj = {
     length: 2,
     0: 1,
@@ -6,5 +6,5 @@ const arrayLikeObj = {
 };
 console.log(Array.from(arrayLikeObj))  // [1,2]
 
-const str="abc";
+const str = "abc";
 console.log(Array.from(str));

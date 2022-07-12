@@ -1,3 +1,4 @@
+// 类数组：是一个有length属性和从0开始索引的属性，但是没有Array的内置属性，比如forEach()和map()等一种特殊对象
 const arrayLike = {
     0: "a",
     1: "b",
@@ -16,7 +17,7 @@ for (let i = 0; i < arrayLike.length; i++) {
 }
 
 
-//非类数组
+//非类数组，没有length属性
 const obj = {
     0: "a",
     1: "b",

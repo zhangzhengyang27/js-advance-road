@@ -1,11 +1,11 @@
-// 类数组
+// 类数组转为数组
 const arrayLikeObj = {
     length: 2,
     0: 1,
     1: 2
 };
-const array1 = Array.prototype.slice.call(arrayLikeObj) 
+const array1 = Array.prototype.slice.call(arrayLikeObj)
 console.log(array1);
 
-const array2 = Array.prototype.concat.apply([], arrayLikeObj) 
+const array2 = Array.prototype.concat.apply([], arrayLikeObj)
 console.log(array2);
