@@ -14,15 +14,16 @@
 </head>
 
 <body>
-    <div>
-        <div>消息：</div>
-        <div id="message"></div>
-    </div>
-    <script>
-        window.addEventListener("storage", function(ev){
-            message.innerHTML = ev.newValue;
-        })
-    </script>
+<div>
+    <div>消息：</div>
+    <div id="message"></div>
+</div>
+<script>
+    window.addEventListener("storage", function (ev) {
+        console.log("other页面的监听事件")
+        message.innerHTML = ev.newValue;
+    })
+</script>
 </body>
 
 </html>

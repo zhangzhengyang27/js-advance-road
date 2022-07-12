@@ -17,15 +17,16 @@
     <button type="button" id="btnAdd">添加</button>
     <button type="button" id="btnGet">取值</button>
     <script>
-        const str = Array.from({ length: 5 * 1024 * 1023 }, _ => "哦").join('')
+        const str = Array.from({ length: 5 * 1024 *100 }, _ => "哦").join('')
+        debugger
         btnAdd.onclick = function () {
             console.time(`存长度${str.length}`)
-            localStorage.setItem('_', str)
+            localStorage.setItem('测试str', str)
             console.timeEnd(`存长度${str.length}`)
         }
         btnGet.onclick = function () {
             console.time(`取长度${str.length}`)
-            localStorage.getItem('_')
+            localStorage.getItem('测试str')
             console.timeEnd(`取长度${str.length}`)
         }
     </script>

@@ -25,6 +25,7 @@
             index++
         }
         window.addEventListener("storage", function (ev) {
+            console.log("index页面的监听事件")
             message.innerHTML = ev.newValue;
         })
     </script>
