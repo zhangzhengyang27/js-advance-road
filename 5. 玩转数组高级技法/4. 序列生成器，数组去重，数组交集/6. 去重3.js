@@ -12,7 +12,7 @@ function uniqueArray(arr = [], key) {
 }
 
 
-var arr = [{ a: 1 }, { a: 1 }, { a: 2 }];
-
+var arr = [{a: 1}, {a: 1}, {a: 2}];
+// [ { a: 1 }, { a: 2 } ]
 console.log("filter 去重：", uniqueArray(arr, "a"));
 
