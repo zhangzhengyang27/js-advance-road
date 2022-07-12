@@ -13,8 +13,8 @@
     /**
      * https://segmentfault.com/q/1010000007499416
      * Promise for forEach
-     * @param {*数组} arr 
-     * @param {*回调} cb(val)返回的应该是Promise 
+     * @param {*数组} arr
+     * @param {*回调} cb(val)返回的应该是Promise
      * @param {*是否需要执行结果集} needResults
      */
     const promiseForEach = function promiseForEach(arr, cb, needResults) {
@@ -77,7 +77,7 @@
     }
 
     class FileError {
-        constructor({ code = 999, message = '未知错误' } = { code: 999, message: '未知错误' }) {
+        constructor({code = 999, message = '未知错误'} = {code: 999, message: '未知错误'}) {
             this.code = code
             this.message = message
         }
@@ -89,6 +89,7 @@
             this.size = size
         }
     }
+
     class FSFile {
         constructor(name, size, type, lastModifiedDate, blob) {
             this.name = name
@@ -98,6 +99,7 @@
             this.blob = blob
         }
     }
+
     const ReaderUtil = {
         read(blob, method) {
             return new Promise((resolve, reject) => {
@@ -131,9 +133,9 @@
     }
 
     const NOT_IMPLEMENTED_ERROR = new FileError({
-        code: 1000,
-        message: '方法未实现'
-    }),
+            code: 1000,
+            message: '方法未实现'
+        }),
         NOT_SUPPORTED = new Error('浏览器不支持改功能')
 
     const Utils = {
@@ -143,11 +145,11 @@
             if (content instanceof Blob) {
                 blob = content
             } else if (content instanceof ArrayBuffer) {
-                blob = new Blob([new Uint8Array(content)], { type })
+                blob = new Blob([new Uint8Array(content)], {type})
             } else if (typeof content === 'string') {
-                blob = new Blob([content], { type: 'text/plain' })
+                blob = new Blob([content], {type: 'text/plain'})
             } else {
-                blob = new Blob([content], { type })
+                blob = new Blob([content], {type})
             }
             return blob
         }
@@ -226,11 +228,12 @@
             super(true, false, name, fullPath)
             this.file = file
         }
+
         /**
          * FileEntry写入数据 done
-         * @param {Blob|String|BufferArray} content 
-         * @param {String} type 
-         * @param {Boolean} append 
+         * @param {Blob|String|BufferArray} content
+         * @param {String} type
+         * @param {Boolean} append
          */
         write(content, type = 'text/plain', append = false) {
             if (!append) {
@@ -277,7 +280,7 @@
          * @param {String} path 路径
          * @param {Object} options  create:是否创建 ， exclusive 排他
          */
-        getFile(path, options = { create: true, exclusive: false }) {
+        getFile(path, options = {create: true, exclusive: false}) {
             if (!URLUtil.isValidatedPath(path)) {
                 return Promise.reject(FILE_ERROR.INVALID_PATH)
             }
@@ -286,10 +289,10 @@
 
         /**
          * 获取目录 done
-         * @param {String} path 
-         * @param {Object} options 
+         * @param {String} path
+         * @param {Object} options
          */
-        getDirectory(path, options = { create: true, exclusive: false }) {
+        getDirectory(path, options = {create: true, exclusive: false}) {
             if (!URLUtil.isValidatedPath(path)) {
                 return Promise.reject(FILE_ERROR.INVALID_PATH)
             }
@@ -422,8 +425,7 @@
                         trans.onsuccess = function () {
                             return resolve()
                         }
-                    }
-                    else {
+                    } else {
                         // 如果是onsuccess 就返回，只表示请求成功，当大文件存储的时候，并不是已经写入完毕才返回
                         //req.onsuccess = event => resolve(event.target.result)
                         trans.oncomplete = function () {
@@ -443,16 +445,16 @@
             }
         }
 
-        /**         * 
-         * @param {Entry} entry 
-         * @param {写入的内容} content 
-         * @param {blob类型} type 
-         * @param {是否是append模式} append 
+        /**         *
+         * @param {Entry} entry
+         * @param {写入的内容} content
+         * @param {blob类型} type
+         * @param {是否是append模式} append
          */
         write(entry, content, type = 'text/plain') {
             this._checkEntry(entry)
             if (entry.isFile !== true) {
-                throw new FileError({ message: FILE_ERROR.ONLY_FILE_WRITE })
+                throw new FileError({message: FILE_ERROR.ONLY_FILE_WRITE})
             }
             let data = Utils.contentToBlob(content, type)
             let file = entry.file
@@ -476,16 +478,16 @@
         }
 
         /**
-         * 
-         * @param {Entry} entry 
-         * @param {String} path 
+         *
+         * @param {Entry} entry
+         * @param {String} path
          * @param {Object} create 是否创建  exclusive排他
          */
-        getFile(entry, path, { create, exclusive }) {
+        getFile(entry, path, {create, exclusive}) {
             return this.getEntry(...arguments, true)
         }
 
-        getDirectory(entry, path, { create, exclusive }) {
+        getDirectory(entry, path, {create, exclusive}) {
             return this.getEntry(...arguments, false)
         }
 
@@ -502,7 +504,7 @@
 
         /**
          * 获得元数据
-         * @param {Entry} entry 
+         * @param {Entry} entry
          */
         getMetadata(entry) {
             const f = entry.file || {}
@@ -511,12 +513,12 @@
 
         /**
          * 获取文件或者目录
-         * @param {Entry} entry 
-         * @param {String} path 
-         * @param {String} param2 
+         * @param {Entry} entry
+         * @param {String} path
+         * @param {String} param2
          * @param {Boolean} getFile true获取文件 false 获取目录
          */
-        getEntry(entry, path, { create, exclusive = false }, getFile = true) {
+        getEntry(entry, path, {create, exclusive = false}, getFile = true) {
             this._checkEntry(entry)
             if (path === DIR_SEPARATOR) {
                 // 如果获取'/'直接返回当前目录
@@ -555,7 +557,7 @@
 
         /**
          * 获得父目录
-         * @param {Entry} entry 
+         * @param {Entry} entry
          */
         getParent(entry) {
             this._checkEntry(entry)
@@ -568,12 +570,12 @@
             if (parentFullPath === '') {
                 return this.root
             }
-            return this.getDirectory(this.root, parentFullPath, { create: false }, false)
+            return this.getDirectory(this.root, parentFullPath, {create: false}, false)
         }
 
         /**
          * 获得目录下的目录和文件
-         * @param {Entry} entry 
+         * @param {Entry} entry
          */
         getEntries(entry) {
             let range = null,
@@ -627,18 +629,18 @@
 
         /**
          * 检查Entry
-         * @param {*Entry} entry 
+         * @param {*Entry} entry
          */
         _checkEntry(entry) {
             if (!entry || !(entry instanceof Entry)) {
-                throw new FileError({ message: FILE_ERROR.NOT_ENTRY })
+                throw new FileError({message: FILE_ERROR.NOT_ENTRY})
             }
         }
 
         /**
-         * 
-         * @param {Entry} entry 
-         * @param {path} path 
+         *
+         * @param {Entry} entry
+         * @param {path} path
          */
         ensureDirectory(entry, path) {
             this._checkEntry(entry)
@@ -653,10 +655,12 @@
             path = rPath.substring(entry.fullPath.length)
             const dirs = path.split(DIR_SEPARATOR)
             return promiseForEach(dirs, (dir, index) => {
-                return entry.getDirectory(dirs.slice(0, index + 1).join('/'), { create: true })
+                return entry.getDirectory(dirs.slice(0, index + 1).join('/'), {create: true})
             }, true).then((dirEntes) => {
                 return dirEntes && dirEntes[dirEntes.length - 1]
-            }).catch(err => { throw err })
+            }).catch(err => {
+                throw err
+            })
         }
     }
 
