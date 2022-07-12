@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<button id="getCookie">获取cookie</button>
+<button id="setCookie">设置cookie</button>
+<button id="deleteCookie">删除一个cookie</button>
+<div class="show-cookie"></div>
+<script>
+    /*
+    *Cookeie的几个特殊选项
+    * 会话期cookie
+    *   浏览器回话期间的cookie,浏览器关闭以后就可以自动删除
+    *   设置会话期cookie：不指定过期时间(Expires)和有效期(max-age)即可
+    * 持久化cookie
+    *   持久化cookie的生命周期取决于过期时间和有效期，持久化cookie存储在客户硬盘中
+    *   max-age:单位秒，0可以删除cookie
+    * httpOnly
+    *   设置为true，可以阻止通过js访问cookie。能有效防止XSS攻击
+    *   document.cookie 无法访问
+    * secure
+    *   设置为true,cookie只会被https传输到服务端
+    * cookie作用域
+    *   Domain：指定哪些域可以接收cookie，默认不包含子域名
+    *           可以设置.tset.com,(a.tset.com)公用cookie
+    *   path:允许接受cookie的url路径，一般设置为/,这样子路由就可以被匹配
+    *   SameSite：
+    *       none:浏览器不限制，同站与跨站都可以发送cookie
+    *       Strict:浏览器只在相同的站点发送cookie
+    *       Lax:新版浏览器默认选项，允许第三方请求携带cookie
+    *
+    *       注意：SameSite必须和secure同时设置才生效
+    *            前端站点和后端接口为https
+    * cookie的key和值编码解码
+    *
+    * */
+
+
+    /*
+    * cookie同源与同站的区别
+    * 同源：协议+端口+域名
+    * 同站：有效的顶级域名+二级域名，不考虑端口与协议  b.tset.com,(a.tset.com)
+    * */
+
+
+    const domNode = document.querySelector(".show-cookie");
+    getCookie.onclick = function () {
+        domNode.innerText = document.cookie;
+    }
+    setCookie.onclick = function () {
+        document.cookie = 'testUid=1;path=/;'
+    }
+
+    deleteCookie.onclick = function () {
+        document.cookie = `testUid=1;path=/;max-age=0;`;
+        //  document.cookie = `testUid=1;path=/;max-age=-1;`;
+
+        //document.cookie = `testUid=1;path=/;max-age=150;`;
+    }
+
+</script>
+</body>
+</html>
