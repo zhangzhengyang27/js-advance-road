@@ -1,8 +1,9 @@
+// for + indexOf
 const arr1 = [1, 2, 3];
 const arr2 = [3, 4, 5];
 
 function mergeArray(arr1, arr2) {
-    // 克隆
+    // 数组克隆
     var arr = arr1.slice(0);
     var v;
     for (let i = 0; i < arr2.length; i++) {
@@ -17,4 +18,5 @@ function mergeArray(arr1, arr2) {
     return arr
 }
 
+// [ 1, 2, 3, 4, 5 ]
 console.log(mergeArray(arr1, arr2))

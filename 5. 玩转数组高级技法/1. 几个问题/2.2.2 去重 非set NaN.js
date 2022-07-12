@@ -17,4 +17,5 @@ function mergeArray(arr1, arr2) {
     return arr
 }
 
+// [ 1, 2,   3, NaN, 4, 5, NaN ]
 console.log(mergeArray(arr1, arr2))

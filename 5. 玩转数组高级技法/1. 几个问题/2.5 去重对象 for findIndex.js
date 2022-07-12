@@ -1,5 +1,6 @@
-const arr1 = [{ id: 1 }, { id: 2 }, { id: 3 }];
-const arr2 = [{ id: 3 }, { id: 4 }, { id: 5 }];
+// 根据id去重  findIndex
+const arr1 = [{id: 1}, {id: 2}, {id: 3}];
+const arr2 = [{id: 3}, {id: 4}, {id: 5}];
 
 function mergeArray(arr1, arr2) {
     // 克隆
@@ -9,7 +10,7 @@ function mergeArray(arr1, arr2) {
         v = arr2[i];
         // 这个操作，
         // 详情参见4.2位运算符的妙用：奇偶数，色值换算，换值， 编码等
-        if (~arr.findIndex(el=> el.id === v.id)) {
+        if (~arr.findIndex(el => el.id === v.id)) {
             continue;
         }
         arr.push(v)
@@ -17,4 +18,5 @@ function mergeArray(arr1, arr2) {
     return arr
 }
 
+// [ { id: 1 }, { id: 2 }, { id: 3 }, { id: 4 }, { id: 5 } ]
 console.log(mergeArray(arr1, arr2))
