@@ -1,8 +1,14 @@
+/*
+* 开源库：underscore|lodash
+* array-union|array-merge-by-key|deep-merger
+* */
+
+
 import * as data from "./data.js";
 
-const { usersInfo, scoresInfo } = data;
+const {usersInfo, scoresInfo} = data;
 
-console.time("merge data")
+console.time("merge data");
 for (let i = 0; i < usersInfo.length; i++) {
     var user: any = usersInfo[i];
     for (let j = 0; j < scoresInfo.length; j++) {
@@ -14,5 +20,5 @@ for (let i = 0; i < usersInfo.length; i++) {
         }
     }
 }
-console.timeEnd("merge data")
+console.timeEnd("merge data");
 console.log(usersInfo);

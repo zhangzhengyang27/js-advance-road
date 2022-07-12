@@ -22,3 +22,11 @@ while (stepIter.hasNext()) {
     console.log(stepIter.current, arr[stepIter.current]);
     stepIter.next()
 }
+/*
+0 11
+1 22
+2 33
+3 44
+4 55
+5 66
+*/

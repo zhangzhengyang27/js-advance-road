@@ -1,6 +1,6 @@
 import * as data from "./data.js";
 
-const { usersInfo, scoresInfo } = data;
+const {usersInfo, scoresInfo} = data;
 
 console.time("merge data")
 
@@ -13,8 +13,9 @@ const scoreMap = scoresInfo.reduce((obj, cur) => {
 const len = scoresInfo.length;
 let count = 0;
 let walkCount = 0;
+// 倒序合并
 for (let i = usersInfo.length - 1; i >= 0; i--) {
-    const user:any = usersInfo[i];
+    const user: any = usersInfo[i];
     const score = scoreMap[user.uid];
 
     walkCount++;

@@ -1,8 +1,6 @@
-
-
 import * as data from "./data.js";
 
-const { usersInfo, scoresInfo } = data;
+const {usersInfo, scoresInfo} = data;
 
 console.time("merge data")
 
