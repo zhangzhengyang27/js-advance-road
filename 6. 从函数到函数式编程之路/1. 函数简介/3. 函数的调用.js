@@ -1,10 +1,9 @@
-
 //直接调用
 function sum1(num1, num2) {
     return num1 + num2;
 }
 
-console.log(sum1(1, 2))
+console.log(sum1(1, 2))   // 3
 
 
 //方法调用
@@ -13,12 +12,13 @@ const obj = {
         return num1 + num2;
     }
 }
-console.log(obj.sum1(1, 3));
+console.log(obj.sum1(1, 3));   // 4
 
 
 //构造调用
 var result = new sum1(1, 3);
-console.log(result);
+console.log(result);  // sum1 {}
+
 
 // call 或者 apply 调用
 const obj1 = {
@@ -32,8 +32,8 @@ const obj2 = {
     name: "李四"
 }
 
-console.log(obj1.getName.call(obj2));
-console.log(obj1.getName.apply(obj2));
+console.log(obj1.getName.call(obj2));  // 李四
+console.log(obj1.getName.apply(obj2));  // 李四
 
 //特殊调用
 (function () {
