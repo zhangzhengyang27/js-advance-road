@@ -10,16 +10,18 @@
 
 <body>
 
-    <script>
-        const urlSP = new URLSearchParams(location.search);
-        function getQueryString(key) {
-            return urlSP.get(key)
-        }
+<script>
+    <!--  页面传递参数，获取页面传递的参数  -->
+    const urlSP = new URLSearchParams(location.search);
+
+    function getQueryString(key) {
+        return urlSP.get(key)
+    }
 
 
-        console.log("words:", getQueryString("words"));  // vue
-        console.log("wordss:", getQueryString("wordss"))  // null
-    </script>
+    console.log("words:", getQueryString("words"));  // vue
+    console.log("wordss:", getQueryString("wordss"))  // null
+</script>
 
 </body>
 

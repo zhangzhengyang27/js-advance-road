@@ -1,3 +1,4 @@
+// 存在问题 ，flat的深度 ；性能问题;丢数据
 const array = [1, [1, , ,]];
 
 const flat = arr => {
@@ -6,4 +7,5 @@ const flat = arr => {
     }, []);
 };
 
+// [ 1, 1 ]
 console.log(flat(array))

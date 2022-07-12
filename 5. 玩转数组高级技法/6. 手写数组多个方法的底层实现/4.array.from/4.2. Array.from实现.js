@@ -1,10 +1,15 @@
 //类数组的特征
 var maxSafeInteger = Math.pow(2, 32) - 1;
 
+// 处理边界
 var ToIntegerOrInfinity = function (value) {
     var number = Number(value);
-    if (isNaN(number)) { return 0; }
-    if (number === 0 || !isFinite(number)) { return number; }
+    if (isNaN(number)) {
+        return 0;
+    }
+    if (number === 0 || !isFinite(number)) {
+        return number;
+    }
     return (number > 0 ? 1 : -1) * Math.floor(Math.abs(number));
 };
 
@@ -13,6 +18,7 @@ var ToLength = function (value) {
     return Math.min(Math.max(len, 0), maxSafeInteger);
 };
 
+// 判断是否函数
 var isCallable = function (fn) {
     return typeof fn === 'function' || toStr.call(fn) === '[object Function]';
 };
@@ -31,6 +37,7 @@ Array.from = function (arrayLike, mapFn, thisArg) {
     }
 
     var items = Object(arrayLike);
+
     //判断 length 为数字，并且在有效范围内。
     var len = ToLength(items.length);
     if (len <= 0) return [];
@@ -48,10 +55,19 @@ Array.from = function (arrayLike, mapFn, thisArg) {
     return A;
 }
 
-// console.log("Array.from:", Array.from({ a: 1, length: "10" }));
-// console.log("Array.from:", Array.from({ a: 1, length: "ss" }));
+/*
+Array.from: [
+  undefined, undefined,
+  undefined, undefined,
+  undefined, undefined,
+  undefined, undefined,
+  undefined, undefined
+]
+*/
+console.log("Array.from:", Array.from({a: 1, length: "10"}));
+console.log("Array.from:", Array.from({a: 1, length: "ss"}));   // []
 
-// console.log("Array.from:", Array.from({ 0: 1, 1: 2, 4: 5, length: 4 }, x => x + x));
+console.log("Array.from:", Array.from({0: 1, 1: 2, 4: 5, length: 4}, x => x + x));  // [ 2, 4, NaN, NaN ]
 
 
 function MyArray(length) {
@@ -65,8 +81,29 @@ function MyObject(length) {
     }
 }
 
-console.log("Array.from:MyArray", Array.from.call(MyArray, { length: 5 }))
+/*
+Array.from:MyArray [
+  undefined,
+  undefined,
+  undefined,
+  undefined,
+  undefined,
+  <5 empty items>
+]
+*/
+// <5 empty items> 是因为length: 5，只遍历到5
+console.log("Array.from:MyArray", Array.from.call(MyArray, {length: 5}))
 
-console.log("Array.from:MyObject", Array.from.call(MyObject, { length: 5 }))
+/*
+Array.from:MyObject {
+  '0': undefined,
+  '1': undefined,
+  '2': undefined,
+  '3': undefined,
+  '4': undefined,
+  length: 5
+}
+*/
+console.log("Array.from:MyObject", Array.from.call(MyObject, {length: 5}))
 
 

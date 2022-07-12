@@ -1,4 +1,4 @@
-
+// 复用
 Array.prototype[Symbol.iterator] = function () {
     const O = Object(this);
     let index = 0;
@@ -6,9 +6,9 @@ Array.prototype[Symbol.iterator] = function () {
 
     function next() {
         if (index < length) {
-            return { value: O[index++], done: false }
+            return {value: O[index++], done: false}
         }
-        return { value: undefined, done: true };
+        return {value: undefined, done: true};
     }
 
     return {
@@ -28,7 +28,9 @@ Array.prototype.entries = function () {
     const itr = this[Symbol.iterator].bind(entries)();
     return {
         next: itr.next,
-        [Symbol.iterator]() { return itr }
+        [Symbol.iterator]() {
+            return itr
+        }
     }
 }
 
@@ -44,7 +46,9 @@ Array.prototype.keys = function () {
     const itr = this[Symbol.iterator].bind(keys)();
     return {
         next: itr.next,
-        [Symbol.iterator]() { return itr }
+        [Symbol.iterator]() {
+            return itr
+        }
     }
 }
 

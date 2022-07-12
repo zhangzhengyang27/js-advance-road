@@ -1,12 +1,13 @@
+// 前一个函数的执行结果式另一个函数的入参
 function runPromises(promiseCreators, initData) {
     return promiseCreators
         .reduce(function (promise, next) {
-            return promise.then((data) => next(data))
-        }
+                return promise.then((data) => next(data))
+            }
             , Promise.resolve(initData));
 }
 
-const initData = { name: 'name', pwd: 'pwd' }
+const initData = {name: 'name', pwd: 'pwd'}
 
 Promise.resolve(initData)
     .then(data => login(data))

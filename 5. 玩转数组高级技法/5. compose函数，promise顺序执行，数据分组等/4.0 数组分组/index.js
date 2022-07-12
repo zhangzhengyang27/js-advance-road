@@ -1,4 +1,5 @@
 const hasOwn = Object.prototype.hasOwnProperty;
+
 function group(arr, fn) {
     // 不是数组
     if (!Array.isArray(arr)) {
@@ -22,6 +23,8 @@ function group(arr, fn) {
 // 按照长度分组
 let result = group(["apple", "pear", "orange", "peach"],
     v => v.length);
+// 前面的key 是字段长度
+// { '4': [ 'pear' ], '5': [ 'apple', 'peach' ], '6': [ 'orange' ] }
 console.log(result);
 
 
@@ -37,4 +40,10 @@ result = group([{
     score: 88
 }], v => v.score >= 60)
 
+/*
+{
+  true: [ { name: 'tom', score: 60 }, { name: 'Nick', score: 88 } ],
+  false: [ { name: 'Jim', score: 40 } ]
+}
+*/
 console.log(result);

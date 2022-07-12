@@ -10,15 +10,17 @@
 
 <body>
 
-    <script>
-        const urlObj = new URL(location.href);
-        function getQueryString(key) {
-            return urlObj.searchParams.get(key)
-        }
+<script>
+    const urlObj = new URL(location.href);
 
-        console.log("words:", getQueryString("words")); // vue
-        console.log("wordss:", getQueryString("wordss")); // null
-    </script>
+    // urlObj.searchParams instanceof URLSearchParams
+    function getQueryString(key) {
+        return urlObj.searchParams.get(key)
+    }
+
+    console.log("words:", getQueryString("words")); // vue
+    console.log("wordss:", getQueryString("wordss")); // null
+</script>
 
 </body>
 

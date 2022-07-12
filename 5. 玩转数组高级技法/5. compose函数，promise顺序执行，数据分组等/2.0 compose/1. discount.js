@@ -7,7 +7,7 @@ function reduce(x) {
 }
 
 const print = console.log
-// 享受九折
+// 享受九折  90
 print(reduce(discount(100)))
-// 享受九折 + 满减
+// 享受九折 + 满减  175
 print(reduce(discount(250)))

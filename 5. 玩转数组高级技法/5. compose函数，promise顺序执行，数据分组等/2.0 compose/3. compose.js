@@ -17,6 +17,7 @@ function discountPlus(x) {
   console.log('discountPlus')
   return x * 0.95
 }
+
 const getPrice = compose(discount, reduce, discountPlus );
 
 const print = console.log;

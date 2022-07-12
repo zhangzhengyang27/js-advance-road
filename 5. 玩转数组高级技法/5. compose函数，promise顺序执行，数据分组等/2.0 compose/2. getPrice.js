@@ -13,7 +13,7 @@ const method = getPriceMethod(discount, reduce)
 
 const print = console.log;
 
-print(method(100))
-print(method(250))
+print(method(100))  // 90
+print(method(250))  // 175
 
 

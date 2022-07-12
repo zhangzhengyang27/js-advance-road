@@ -5,20 +5,20 @@ Array.prototype.entries = function () {
 
     function next() {
         if (index < length) {
-            return { value: [index, O[index++]], done: false }
+            return {value: [index, O[index++]], done: false}
         }
-        return { value: undefined, done: true };
+        return {value: undefined, done: true};
     }
+
     return {
         next,
-        [Symbol.iterator](){
+        [Symbol.iterator]() {
             return {
                 next
             }
         }
     }
 }
-
 
 
 const arr = [1, 2, 3];
@@ -32,3 +32,8 @@ console.log("iter.next().value:", iter.next().value);
 for (let [k, v] of arr.entries()) {
     console.log(`k:${k}`, `v:${v}`)
 }
+/*
+k:0 v:1
+k:1 v:2
+k:2 v:3
+*/

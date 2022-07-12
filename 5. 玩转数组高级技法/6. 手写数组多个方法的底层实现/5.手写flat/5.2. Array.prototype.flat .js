@@ -10,8 +10,12 @@ var maxSafeInteger = Math.pow(2, 32) - 1;
 
 var toInteger = function (value) {
     const number = Number(value);
-    if (isNaN(number)) { return 0; }
-    if (number === 0 || !isFinite(number)) { return number; }
+    if (isNaN(number)) {
+        return 0;
+    }
+    if (number === 0 || !isFinite(number)) {
+        return number;
+    }
     return (number > 0 ? 1 : -1) * Math.floor(Math.abs(number));
 };
 
@@ -51,4 +55,5 @@ Array.prototype.flat = function (deep) {
     return arr;
 }
 
+// [1,3,4,5,6,7,8,[ 9, <1 empty item>, 10 ],undefined,undefined,undefined,null,NaN]
 console.log(array.flat(2))
