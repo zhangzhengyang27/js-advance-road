@@ -9,21 +9,23 @@
 </head>
 
 <body>
-    <div>window.onerror捕获到的错误</div>
+<div>window.onerror捕获到的错误</div>
 
-    <script>
-        window.onerror = function (message, url, line, column, error) {
-            console.log('捕获到错误:', message, "==line:", line, "==column:", column, "==error:", error);
-        }
+<script>
+    window.onerror = function (message, url, line, column, error) {
+        // 捕获到错误: Uncaught TypeError: Cannot read properties of undefined (reading 'ee') ==line: 24 ==column: 10 ==error: TypeError: Cannot read properties of undefined (reading 'ee')
+        // 捕获到错误: Uncaught ReferenceError: a is not defined ==line: 20 ==column: 9 ==error: ReferenceError: a is not defined
+        console.log('捕获到错误:', message, "==line:", line, "==column:", column, "==error:", error);
+    }
 
-        setTimeout(() => {
-            a.b();
-        })
+    setTimeout(() => {
+        a.b();
+    })
 
-        var f = {};
-        f.cc.ee;
+    var f = {};
+    f.cc.ee;
 
-    </script>
+</script>
 </body>
 
 </html>

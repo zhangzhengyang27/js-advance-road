@@ -15,40 +15,40 @@
 
 <body>
 
-    <button type="button" id="btnEx">不能捕获的</button>
+<button type="button" id="btnEx">不能捕获的</button>
 
-    <script>
+<script>
 
+    window.onerror = function (message, source, lineno, colno, error) {
+        var string = msg.toLowerCase();
+        var substring = "script error";
+        if (string.indexOf(substring) > -1) {
+            alert('Script Error: See Browser Console for Detail');
+        } else {
+            var message = [
+                'Message: ' + msg,
+                'URL: ' + url,
+                'Line: ' + lineNo,
+                'Column: ' + columnNo,
+                'Error object: ' + JSON.stringify(error)
+            ].join(' - ');
 
-        window.onerror = function (message, source, lineno, colno, error) {
-            var string = msg.toLowerCase();
-            var substring = "script error";
-            if (string.indexOf(substring) > -1) {
-                alert('Script Error: See Browser Console for Detail');
-            } else {
-                var message = [
-                    'Message: ' + msg,
-                    'URL: ' + url,
-                    'Line: ' + lineNo,
-                    'Column: ' + columnNo,
-                    'Error object: ' + JSON.stringify(error)
-                ].join(' - ');
-
-                console.log(message);
-            }
+            console.log(message);
         }
+    }
 
-        window.addEventListener("error", function(){
-            console.log('Script Error: See Browser Console for')
-        }, true);
+    window.addEventListener("error", function () {
+        console.log('Script Error: See Browser Console for')
+    }, true);
 
-        btnEx.onclick = function () {
-            try {
-                var hhhh bbbb;
+    btnEx.onclick = function () {
+        try {
+            var hhhh
+            bbbb;
 
-            } catch (e) {
-                console.log('e.message:', e.message);
-            }
+        } catch (e) {
+            console.log('e.message:', e.message);
         }
-    </script>
+    }
+</script>
 </body>

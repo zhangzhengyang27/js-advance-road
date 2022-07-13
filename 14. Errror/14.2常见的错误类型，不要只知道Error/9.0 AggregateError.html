@@ -9,17 +9,17 @@
 </head>
 
 <body>
-    <script>
-        Promise.any([
-            Promise.reject(new Error("error 1")),
-            Promise.reject(new Error("error 2")),
-        ]).catch(e => {
-            console.log("e instanceof AggregateError:", e instanceof AggregateError);
-            console.log("e.message:", e.message);
-            console.log("e.name", e.name);
-            console.log("e.errors", e.errors);
-        });
-    </script>
+<script>
+    Promise.any([
+        Promise.reject(new Error("error 1")),
+        Promise.reject(new Error("error 2")),
+    ]).catch(e => {
+        console.log("e instanceof AggregateError:", e instanceof AggregateError);
+        console.log("e.message:", e.message);
+        console.log("e.name", e.name);
+        console.log("e.errors", e.errors);
+    });
+</script>
 </body>
 
 </html>

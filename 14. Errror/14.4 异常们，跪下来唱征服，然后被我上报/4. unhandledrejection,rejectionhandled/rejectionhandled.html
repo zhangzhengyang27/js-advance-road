@@ -12,6 +12,7 @@
     <div>promise 错误</div>
 
     <script>
+
         window.addEventListener("unhandledrejection", function (e) {
             //阻断异常继续抛出
             e.preventDefault();
@@ -29,6 +30,7 @@
             reject("promise error1");
         });
 
+        // 异步函数没执行时unhandledrejection触发，catch之后触发rejectionhandled事件
         setTimeout(() => {
             p1.catch((e) => {
                 console.log("catch捕获到promise1 错误:", e);

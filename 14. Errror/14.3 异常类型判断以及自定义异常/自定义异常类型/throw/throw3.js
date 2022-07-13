@@ -1,5 +1,6 @@
+// 处理异常
 try {
-    throw 500; 
+    throw 500;
  } catch (e) {
     if (e <= 50) {
        console.log("已处理");
