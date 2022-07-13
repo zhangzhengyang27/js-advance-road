@@ -1,8 +1,9 @@
-
+// 消息通知
 class Emitter {
     constructor() {
         this._events = Object.create(null);
     }
+
     emit(type, ...args) {
         const events = this._events[type];
         if (!Array.isArray(events) || events.length === 0) {
@@ -22,16 +23,18 @@ class Emitter {
         if (index < -1) {
             return;
         }
+        // 删除
         events.splice(index, 1);
     }
 }
 
-
+// 缓存管理
 class CacheManager {
     constructor(storage) {
         this.storage = storage;
         this._cached = Object.create(null);
     }
+
     load(keys) {
         const cached = this._cached;
         return this.storage.getMany(keys).then(results => {
@@ -43,22 +46,28 @@ class CacheManager {
             return cached;
         })
     }
+
     get data() {
         return this._cached;
     }
+
     get(key) {
         return this._cached[key]
     }
+
     isCached(key) {
         return this._cached[key] != undefined;
     }
+
     set(key, value) {
         return this.storage.set(key, value);
     }
+
     clear() {
         this._cached = Object.create(null);
         // return this.storage.clear();
     }
+
     del(key) {
         delete this._cached[key];
     }
@@ -138,7 +147,7 @@ class ResourceLoader extends Emitter {
         return {
             total,
             loaded,
-            percent: total === 0 ? 0 : + ((loaded / total) * 100).toFixed(2)
+            percent: total === 0 ? 0 : +((loaded / total) * 100).toFixed(2)
         }
     }
 
@@ -186,6 +195,7 @@ class ResourceLoader extends Emitter {
         return preArray.every(p => this._loaded[p] !== undefined);
     }
 
+    // 找到可以加载的资源
     findCanLoadResource() {
         const info = this.resourcesInfo.find(r => r.status == undefined && (r.pre == undefined || this.isPreLoaded(r.pre)));
         return info;
