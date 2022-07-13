@@ -56,7 +56,7 @@
     function updateSnows() {
         [...document.images].forEach(function (el, i) {
             el.classList.add("ts");
-            el.style.transitionDuration = 3000 + Math.floor(Math.random() * i * 1000/800 ) + "ms";
+            el.style.transitionDuration = 3000 + Math.floor(Math.random() * i * 1000 / 800) + "ms";
             el.style.left = 50 + (Math.random() > 0.49 ? 1 : -1) * Math.random() * 200 + "vw";
             el.style.top = 100 + 1 * Math.round(Math.random() * 50) + "vh";
             el.style.transitionTimingFunction = `cubic-bezier(${Math.random().toFixed(2)},${Math.random().toFixed(2)},${Math.random().toFixed(2)},${Math.random().toFixed(2)})`

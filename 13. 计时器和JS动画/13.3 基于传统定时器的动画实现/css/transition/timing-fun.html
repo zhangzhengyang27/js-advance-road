@@ -7,8 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>内置贝塞尔的运动</title>
     <style>
-        
-        *  {
+        * {
             font-size: 28px;
             color: #FFF;
             font-weight: bold
@@ -65,11 +64,11 @@
 
         .transition-fn-ease-in-out {
             transition-timing-function: ease-in-out;
-            
-             /* transition-timing-function: cubic-bezier(.95,.05,.59,.75) */
+            /* 定制效果 */
+            /* transition-timing-function: cubic-bezier(.95,.05,.59,.75) */
         }
 
-        .transition.ani div{
+        .transition.ani div {
             left: calc(100% - 100px);
         }
     </style>
@@ -85,17 +84,17 @@
         <div class="bg-aqua transition-s transition-fn-ease-in-out" data-t="ease-in-out">ease-in-out</div>
     </div>
     <div>
-    <button id="btnStart" style="color:red">开始</button>
+        <button id="btnStart" style="color:red">开始</button>
     </div>
 
     <script>
 
         var el = document.querySelector(".transition");
-        document.getElementById("btnStart").addEventListener("click", function(){
+        document.getElementById("btnStart").addEventListener("click", function () {
             el.classList.add("ani");
         })
 
-        document.querySelector(".transition-s").addEventListener("transitionend", function(){
+        document.querySelector(".transition-s").addEventListener("transitionend", function () {
             el.classList.remove("ani");
         })
 
