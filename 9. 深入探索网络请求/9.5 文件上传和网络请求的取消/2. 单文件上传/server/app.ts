@@ -1,8 +1,12 @@
 import http from "http";
+
 import bodyParser from "body-parser";
+
 import express from "express";
 import path = require("path");
+
 import createError from "http-errors";
+
 const multer = require('multer')
 
 const port = 3000;
@@ -27,13 +31,13 @@ const storage = multer.diskStorage({
     },
 });
 
-const multerUpload = multer({ storage });
+const multerUpload = multer({storage});
 
 //设置静态访问目录
 app.use(express.static(uploadDIr));
 
 
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.urlencoded({extended: true}));
 const server = http.createServer(app);
 
 //设置跨域访问
@@ -81,7 +85,6 @@ app.post('/upload', multerUpload.any(), function (req, res, _next) {
     });
 
 });
-
 
 
 server.listen(port, () => {

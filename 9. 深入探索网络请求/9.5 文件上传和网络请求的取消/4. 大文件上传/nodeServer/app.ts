@@ -1,8 +1,9 @@
 import http from "http";
 import express from "express";
 import path = require("path");
-import { checkFileIsMerge, chunkMerge } from "./upload";
+import {checkFileIsMerge, chunkMerge} from "./upload";
 import createError from "http-errors";
+
 const multiparty = require("multiparty");
 const fse = require("fs-extra");
 
@@ -16,7 +17,6 @@ const resourceUrl = `http://127.0.0.1:${port}/`;
 
 // 存储文件目录
 const uploadDIr = path.join(__dirname, "/upload");
-
 
 
 //设置静态访问目录
@@ -47,8 +47,8 @@ app.use(function (req, res, next) {
 
 /**
  * 提取文件后缀名
- * @param filename 
- * @returns 
+ * @param filename
+ * @returns
  */
 const extractExt = filename =>
     filename.slice(filename.lastIndexOf("."), filename.length); // 提取后缀名
@@ -85,6 +85,7 @@ app.post('/uploadBigFile', function (req, res, _next) {
         const [totalSize] = fields.totalSize;
 
         const saveFileName = `${fileHash}${extractExt(fileName)}`;
+
         //获取整个文件存储路径
         const filePath = path.resolve(
             uploadDIr,
@@ -97,7 +98,7 @@ app.post('/uploadBigFile', function (req, res, _next) {
         if (fse.existsSync(filePath)) {
             return res.json({
                 code: 1000,
-                data: { url: `${resourceUrl}${saveFileName}` },
+                data: {url: `${resourceUrl}${saveFileName}`},
                 msg: "上传文件已存在"
             });
         }
@@ -109,10 +110,11 @@ app.post('/uploadBigFile', function (req, res, _next) {
 
 
         const chunkFile = path.resolve(chunkDir, hash);
+        // 移动文件目录
         if (!fse.existsSync(chunkFile)) {
             await fse.move(chunk.path, path.resolve(chunkDir, hash));
         }
-
+        // 判断是否可以合并了
         const isMerge = checkFileIsMerge(chunkDir, Number(fileCount), fileHash);
         if (isMerge) {
             //合并
@@ -124,25 +126,22 @@ app.post('/uploadBigFile', function (req, res, _next) {
                 fileCount: Number(fileCount),
                 totalSize: Number(totalSize),
             });
+            // 需要合并的返回 1000
             return res.json({
                 code: 1000,
-                data: { url: `${resourceUrl}${saveFileName}` },
+                data: {url: `${resourceUrl}${saveFileName}`},
                 msg: "文件上传成功"
             });
         } else {
             return res.json({
                 code: 200,
-                data: { url: `${resourceUrl}${filePath}` },
+                data: {url: `${resourceUrl}${filePath}`},
                 msg: "文件上传成功"
             });
         }
     })
 
 });
-
-
-
-
 
 
 server.listen(port, () => {

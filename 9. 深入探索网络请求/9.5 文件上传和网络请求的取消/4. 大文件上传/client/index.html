@@ -17,33 +17,33 @@
 </head>
 
 <body>
-    <input id="uploadFile" type="file" />
-    <button type="button" id="uploadBtn" onClick="startUpload()">开始上传</button>
-    <div class="progress">
-        上传进度：<span id="progressValue">0</span>
-    </div>
+<input id="uploadFile" type="file"/>
+<button type="button" id="uploadBtn" onClick="startUpload()">开始上传</button>
+<div class="progress">
+    上传进度：<span id="progressValue">0</span>
+</div>
 
-    <div id="uploadResult" class="result">
+<div id="uploadResult" class="result">
 
-    </div>
+</div>
 
-    <script>
-        const uploadFileEle = document.getElementById("uploadFile");
-        const progressValueEle = document.getElementById("progressValue");
-        const uploadResultEle = document.getElementById("uploadResult");
+<script>
+    const uploadFileEle = document.getElementById("uploadFile");
+    const progressValueEle = document.getElementById("progressValue");
+    const uploadResultEle = document.getElementById("uploadResult");
 
-        try {
-            function startUpload() {
-                if (!uploadFileEle.files.length) return;
-                //获取文件
-                const file = uploadFileEle.files[0];
-                window.upload.start(file);
-            }
-        } catch (e) {
-            console.log("error==", e);
+    try {
+        function startUpload() {
+            if (!uploadFileEle.files.length) return;
+            //获取文件
+            const file = uploadFileEle.files[0];
+            window.upload.start(file);
         }
+    } catch (e) {
+        console.log("error==", e);
+    }
 
-    </script>
+</script>
 </body>
 
 </html>

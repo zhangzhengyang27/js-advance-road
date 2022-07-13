@@ -2,11 +2,14 @@
 const DefaultChunkSize = 5 * 1024 * 1024;
 
 const start = async function (bigFile) {
+
     //生成多个切片
     const fileList = handleFileChunk(bigFile, DefaultChunkSize);
+
     //获取整个大文件的内容hash,方便实现秒传
     // const containerHash = await getFileHash(fileList);
     const containerHash = await getFileHash2(bigFile);
+
     //给每个切片添加辅助内容信息
     const chunksInfo = fileList.map(({ file }, index) => ({
         //整个文件hash
@@ -32,9 +35,9 @@ const start = async function (bigFile) {
 
 
 /**
- * 
+ *
  * 获取全部文件内容hash
- * @param {any} fileList 
+ * @param {any} fileList
  */
 async function getFileHash(fileList) {
     console.time("filehash")
@@ -58,9 +61,9 @@ async function getFileHash(fileList) {
 }
 
 /**
- * 
+ *
  * 获取全部文件内容hash
- * @param {any} fileList 
+ * @param {any} fileList
  */
 async function getFileHash2(file) {
 
@@ -81,10 +84,10 @@ async function getFileHash2(file) {
 
 
 /**
- * 
+ *
  * 获取文件内容
- * @param {any} file 
- * @returns 
+ * @param {any} file
+ * @returns
  */
 function getFileContent(file) {
     return new Promise((resolve, reject) => {
@@ -103,10 +106,10 @@ function getFileContent(file) {
 }
 
 /**
- * 
+ *
  * 上传所有的分片
- * @param {any} chunks 
- * @param {any} fileName 
+ * @param {any} chunks
+ * @param {any} fileName
  */
 async function uploadChunks(chunks, fileName) {
     const requestList = chunks
@@ -137,15 +140,15 @@ async function uploadChunks(chunks, fileName) {
 
 
 /**
- * 
+ *
  * 单个文件上传
  * @param {any} {
  *     url,
  *     method="post",
  *     data,
  *     headers={},
- * } 
- * @returns 
+ * }
+ * @returns
  */
 function singleRequest({
     url,
