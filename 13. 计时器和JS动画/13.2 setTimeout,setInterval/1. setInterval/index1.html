@@ -20,10 +20,22 @@
     <div id="progress" class="warp" style="width: 0">0%</div>
     <button id="start">开始</button>
     <script>
+
+
+        // 有一个setTimeout 4秒后触发一次，耗时9秒
+        // setInterval每5秒触发一次，每次耗时4秒
+        // 用户在第三秒的时候，触发点击事件，事件耗时6秒
+
+        // js主线程 和计数器线程是相互独立
+        // 宏任务队列一次只能执行一个任务，而微任务队列可以同时执行多个任务
+        // setInterval如果上一个回调函数没有被执行，它是不会被注册
+
+
         //同步耗时操作
         function syncSleep(duration) {
             const now = Date.now();
-            while (now + duration > Date.now()) { }
+            while (now + duration > Date.now()) {
+            }
         }
 
         var interval = null;
@@ -57,22 +69,21 @@
         intervalFun(6);
 
 
-
         timeout = setTimeout(() => {
             printTime("模拟click");
             start.click();
-        }, 3000),
+        }, 3000);
 
         timeout = setTimeout(() => {
             printTime("执行timeout");
             syncSleep(9000);
             printTime("执行timeout完毕");
-        }, 4000),
+        }, 4000);
 
         start.onclick = function () {
-                printTime("执行onClick");
-                syncSleep(6000);
-                printTime("执行onClick完毕");
+            printTime("执行onClick");
+            syncSleep(6000);
+            printTime("执行onClick完毕");
         };
 
         window.onbeforeunload = function (event) {
@@ -86,22 +97,21 @@
             }
         };
 
-        //onclick（当前）                             3s + 6 
-        //onclick（当前）,timeout                     4s 
-        //onclick（当前），timeout,interval-1         5s 
-        //timeout（当前）,interval-1                  9s + 9 
-        //timeout（当前）,interval-1                  10s     interval-2 
-        //timeout（当前）,interval-1                  15s     interval-3 
-        //interval-1（当前）                          18s + 4 
-        //interval-1（当前）                          18s + 4 
-        //interval-1（当前）,interval-4               20s 
-        //interval-4（当前）                          22s + 4
-        //interval-4（当前），interval-5              25s
-        //interval-5（当前），                         26s + 4
-        //interval-6                                 30s
-        //interval-7                                 35s
+    //onclick（当前）                             3s + 6
+    //onclick（当前）,timeout                     4s
+    //onclick（当前），timeout,interval-1         5s
+    //timeout（当前）,interval-1                  9s + 9
+    //timeout（当前）,interval-1                  10s     interval-2
+    //timeout（当前）,interval-1                  15s     interval-3
+    //interval-1（当前）                          18s + 4
+    //interval-1（当前）                          18s + 4
+    //interval-1（当前）,interval-4               20s
+    //interval-4（当前）                          22s + 4
+    //interval-4（当前），interval-5              25s
+    //interval-5（当前），                         26s + 4
+    //interval-6                                 30s
+    //interval-7                                 35s
     </script>
 </body>
 
 </html>
-
