@@ -10,7 +10,6 @@
 
 <body>
 
-
     <div id="div1">
         我们一起学Javascript
     </div>
@@ -20,6 +19,7 @@
     </div>
     <script>
         const div1El = document.getElementById("div1");
+        // id属性可以直接拿来使用
         btnSplit.addEventListener("click", function () {
             div1El.firstChild.splitText(5);
             console.log(div1El.childNodes.length)

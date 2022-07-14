@@ -10,8 +10,8 @@
 
 <body>
     <div>
-        <button id="btnBatch" >批量创建</button>
-        <button id="btnSingle" >单独创建</button>
+        <button id="btnBatch">批量创建</button>
+        <button id="btnSingle">单独创建</button>
     </div>
     <div id="root" style="height:500px; overflow:auto;">
 
@@ -25,6 +25,7 @@
         }));
 
         var rootEl = document.getElementById("root");
+
         function createByS() {
             console.time("createByS");
             items.forEach(function (item) {

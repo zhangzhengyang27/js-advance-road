@@ -28,6 +28,7 @@
         `, "text/xml");
 
         console.log("constructor:", xmlDoc.__proto__.constructor);
+
         const persons = xmlDoc.querySelectorAll("person");
 
         const personsJSON = Array.from(persons).map(function (node) {
