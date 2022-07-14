@@ -18,7 +18,8 @@
             margin-top: 50px;
         }
 
-        #btnPlay, #btnPlayPromise {
+        #btnPlay,
+        #btnPlayPromise {
             margin-top: 50px;
             font-size: 28px
         }
@@ -52,6 +53,7 @@
             const ky1 = new KeyframeEffect(kyEffect);
             ky1.target = box1ItemEl;
             const ani = new Animation(ky1);
+
             ani.play();
             ani.onfinish = function () {
                 console.log("box1 animation finished");

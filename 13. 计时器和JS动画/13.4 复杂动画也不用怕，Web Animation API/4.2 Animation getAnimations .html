@@ -57,10 +57,10 @@
             new Animation(kyEffect2).play();
 
             Promise
-            .all(box1ItemEl.getAnimations().map(a=> a.finished))
-            .then(function(){
-                console.log("all animations finished");
-            })
+                .all(box1ItemEl.getAnimations().map(a => a.finished))
+                .then(function () {
+                    console.log("all animations finished");
+                })
         }
 
     </script>

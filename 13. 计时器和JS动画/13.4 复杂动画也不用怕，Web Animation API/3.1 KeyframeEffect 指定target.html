@@ -40,6 +40,7 @@
         const box2ItemEl = document.querySelector(".box2");
 
         btnPlay.onclick = () => {
+            // 第二种方式：使用KeyframeEffect
             const kyEffect1 = new KeyframeEffect(null, {
                 transform: ['translateX(0)', 'translateX(500px)']
             },
@@ -49,10 +50,11 @@
                 }
             )
 
+            // 第三种方式 复制
             const ky1 = new KeyframeEffect(kyEffect1);
             ky1.target = box1ItemEl;
             new Animation(ky1).play();
- 
+
             const ky2 = new KeyframeEffect(kyEffect1);
             ky2.target = box2ItemEl;
             new Animation(ky2).play();
