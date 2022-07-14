@@ -52,7 +52,9 @@ animation对比transition
 
 
 css vs js
-  css动画优于js动画
+  css动画性能优于js动画
+  两个状态之间的简单切换，使用css动画
+  复杂动画，使用js动画，可控性比较好
 
 
 动画的注意事项
